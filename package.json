@@ -1,11 +1,12 @@
 {
   "name": "checkpoints",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint --fix",
+    "dev": "yarn serve --mode=development"
   },
   "dependencies": {
     "core-js": "^2.6.5",
