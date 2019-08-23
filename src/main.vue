@@ -8,7 +8,10 @@
         <note-archive :notes="archive" @select="select" />
       </div>
       <div class="w-2/3 p-1 m-1">
-        <note-view v-for="note in selected" :key="note.slug" :note="note" />
+        <div v-for="note in selected" :key="note.slug">
+          <note-edit v-if="note.edit" :note="note" />
+          <note-view v-else :note="note" />
+        </div>
       </div>
     </div>
   </div>
@@ -18,10 +21,11 @@
 import notes from '@/notes'
 import NoteArchive from '@/components/note-archive'
 import NoteView from '@/components/note-view'
+import NoteEdit from '@/components/note-edit'
 
 export default {
   name: 'main-app',
-  components: { NoteArchive, NoteView },
+  components: { NoteArchive, NoteView, NoteEdit },
   methods: {
     select (note) {
       const noteSelected = this.selected.find(n => n.slug === note.slug)

@@ -15,7 +15,7 @@ const set = (item) => {
 const create = (slug, title, text) => {
   const itemSlug = slugify(slug || title).substring(0, SLUG_MAX)
   const created = new Date()
-  return { title, text, created, slug: itemSlug, updated: null }
+  return { title, text, created, slug: itemSlug, updated: null, edit: false }
 }
 
 const push = (slug, { title, text } = { }) => {
