@@ -1,14 +1,18 @@
 <template>
-  <section :id="$options.name" v-if="note">
-    <header>
-      <h1 :id="note.slug">{{ note.title }}</h1>
-      <small @click="note.edit = true">
-        {{ note.created }} /
-        {{ note.updated }} /
-        {{ note.slug }}
-      </small>
-    </header>
-    <div>{{ note.text }}</div>
+  <section :id="$options.name" class="rounded shadow-md" v-if="note">
+    <div class="p-4">
+      <header class="mb-2">
+        <h1 :id="note.slug" class="font-bold text-xl">
+          {{ note.title }}
+        </h1>
+      </header>
+      <div class="mb-2 text-gray-800 text-base">{{ note.text }}</div>
+      <div class="text-sm text-gray-500" @click="note.edit = true">
+        {{ note.updated.toLocaleDateString() }}
+        {{ note.updated.toLocaleTimeString() }} · 
+        #{{ note.slug }}
+      </div>
+    </div>
   </section>
 </template>
 
