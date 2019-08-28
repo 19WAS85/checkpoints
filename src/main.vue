@@ -1,20 +1,20 @@
 <template>
-  <div :id="$options.name" class="container mx-auto">
-    <header class="w-full">
-      <h1 class="p-2">Checkpoints</h1>
+  <section :id="$options.name" class="container mx-auto">
+    <header class="w-full p-2 font-bold text-gray-400">
+      <h1>Checkpoints</h1>
     </header>
     <div class="flex">
-      <div class="w-1/3 p-1 m-1">
+      <div class="w-1/4 p-1 m-1">
         <note-archive :notes="archive" @select="select" />
       </div>
-      <div class="w-2/3 p-1 m-1">
+      <div class="w-3/4 p-1 m-1">
         <div v-for="note in selected" :key="note.slug">
           <note-edit v-if="note.edit" :note="note" />
           <note-view v-else :note="note" />
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -24,7 +24,7 @@ import NoteView from '@/components/note-view'
 import NoteEdit from '@/components/note-edit'
 
 export default {
-  name: 'main-app',
+  name: 'checkpoint-main',
   components: { NoteArchive, NoteView, NoteEdit },
   methods: {
     select (note) {
