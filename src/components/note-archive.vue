@@ -3,7 +3,7 @@
     <h1>Archive</h1>
     <ul>
       <li v-for="note in notes" :key="note.slug">
-        <a :href="`/#/${note.slug}`" @click="$emit('select', note)">
+        <a :href="`#${note.slug}`" @click="$emit('select', note)">
           {{ note.title }}
         </a>
       </li>

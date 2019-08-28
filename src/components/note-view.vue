@@ -1,7 +1,7 @@
 <template>
   <section :id="$options.name" v-if="note">
     <header>
-      <h1>{{ note.title }}</h1>
+      <h1 :id="note.slug">{{ note.title }}</h1>
       <small @click="note.edit = true">
         {{ note.created }} /
         {{ note.updated }} /
