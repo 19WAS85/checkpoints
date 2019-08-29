@@ -5,7 +5,7 @@
     </header>
     <div class="flex">
       <div class="w-1/4 p-1 m-1">
-        <note-archive :notes="archive" @select="select" />
+        <note-archive :notes="archive" @select="select" @create="create" />
       </div>
       <div class="w-3/4 p-1 m-1">
         <div v-for="note in selected" :key="note.slug">
@@ -30,6 +30,10 @@ export default {
     select (note) {
       const noteSelected = this.selected.find(n => n.slug === note.slug)
       if (!noteSelected) this.selected.push(note)
+    },
+    create () {
+      const newNote = notes.create({ edit: true })
+      this.selected.push(newNote)
     }
   },
   data () { return { selected: [], archive: null } },
