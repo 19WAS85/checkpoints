@@ -4,9 +4,11 @@
       <div class="flex mb-2">
         <div class="w-1/2 pr-1">
           <input class="border border-gray-200 rounded py-1 px-2 w-full"
+            autofocus
             type="text"
             placeholder="Title"
-            v-model="note.title">
+            v-model="note.title"
+            @blur="updateLink">
         </div>
         <div class="w-1/2">
           <input class="border border-gray-200 rounded py-1 px-2 w-full"
@@ -17,6 +19,7 @@
       </div>
       <div class="mb-1">
         <textarea class="border border-gray-200 rounded py-1 px-2 w-full"
+          autofocus
           placeholder="Text"
           rows="5"
           v-model="note.text">
@@ -40,9 +43,12 @@
 </template>
 
 <script>
+import slugify from '@/slugify'
+
 export default {
   name: 'note-edit',
   props: { note: Object },
+  methods: { updateLink () { this.link = slugify(this.note.title) } },
   data () { return { link: null } },
   mounted () { this.link = this.note.key }
 }

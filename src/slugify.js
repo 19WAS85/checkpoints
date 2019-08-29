@@ -1,7 +1,7 @@
 // https://gist.github.com/hagemann/382adfc57adbd5af078dc93feef01fe1
 export default function slugify (value) {
   const validText = value && value.length && value.length > 0
-  if (!validText) throw Error(`Invalid value [${value}]`)
+  if (!validText) return null
   const a = 'àáäâãåăæąçćčđďèéěėëêęğǵḧìíïîįłḿǹńňñòóöôœøṕŕřßşśšșťțùúüûǘůűūųẃẍÿýźžż·/_,:;'
   const b = 'aaaaaaaaacccddeeeeeeegghiiiiilmnnnnooooooprrsssssttuuuuuuuuuwxyyzzz------'
   const p = new RegExp(a.split('').join('|'), 'g')

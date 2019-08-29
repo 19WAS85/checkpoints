@@ -16,6 +16,7 @@
 
 <script>
 import notes from '@/notes'
+import slugify from '@/slugify'
 import NoteArchive from '@/components/note-archive'
 import NoteView from '@/components/note-view'
 import NoteEdit from '@/components/note-edit'
@@ -25,7 +26,10 @@ export default {
   components: { NoteArchive, NoteView, NoteEdit },
   methods: {
     edit (note) { note.edit = true },
-    create (title) { this.selected.unshift(notes.create({ title, edit: true })) },
+    create (title) {
+      const key = slugify(title)
+      this.selected.unshift(notes.create({ key, title, edit: true }))
+    },
     close (note) {
       const index = this.selected.findIndex(n => n.key === note.key)
       if (index > -1) this.selected.splice(index, 1)
