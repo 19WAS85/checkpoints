@@ -24,12 +24,12 @@ const create = ({ key, title, text, created, edit }) => {
   return note
 }
 
-const rand = () => Math.random().toString().split('.')[1]
-
 const push = ({ key, title, text, created }) => {
-  const noteKey = slugify(key || title || text || rand()).substring(0, KEY_MAX)
+  const noteKey = slugify(key || title || text).substring(0, KEY_MAX)
   return set(create({ key: noteKey, title, text, created }))
 }
+
+const changeKey = (oldKey, newKey) => { find(oldKey).key = newKey }
 
 if (ARCHIVE.length === 0) {
   push({
@@ -38,4 +38,4 @@ if (ARCHIVE.length === 0) {
   })
 }
 
-export default { rawList, find, push, create }
+export default { rawList, find, push, create, changeKey }

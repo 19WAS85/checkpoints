@@ -30,7 +30,8 @@ export default {
       const noteSelected = this.selected.find(n => n.key === note.key)
       if (!noteSelected) this.selected.push(note)
     },
-    push (note) {
+    push (note, link) {
+      if (note.key && note.key !== link) notes.changeKey(note.key, link)
       note.edit = false
       notes.push(note)
     }

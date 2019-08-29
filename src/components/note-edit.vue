@@ -8,7 +8,7 @@
         </div>
         <div class="w-1/2">
           <input class="border border-gray-200 rounded py-1 px-2 w-full"
-            type="text" placeholder="Key (Link)" v-model="note.key">
+            type="text" placeholder="Link" v-model="link">
         </div>
       </div>
       <div class="mb-1">
@@ -24,7 +24,7 @@
         <div class="w-1/2 text-right">
           <button
             class="px-4 py-2 rounded-full bg-green-500 text-white font-bold"
-            @click="$emit('push', note)">Done
+            @click="$emit('push', note, link)">Done
           </button>
         </div>
       </div>
@@ -35,6 +35,8 @@
 <script>
 export default {
   name: 'note-edit',
-  props: { note: Object }
+  props: { note: Object },
+  data () { return { link: null } },
+  mounted () { this.link = this.note.key }
 }
 </script>
