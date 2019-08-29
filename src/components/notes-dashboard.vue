@@ -25,10 +25,10 @@ export default {
   components: { NoteArchive, NoteView, NoteEdit },
   methods: {
     edit (note) { note.edit = true },
-    create () { this.selected.push(notes.create({ edit: true })) },
+    create () { this.selected.unshift(notes.create({ edit: true })) },
     select (note) {
       const noteSelected = this.selected.find(n => n.key === note.key)
-      if (!noteSelected) this.selected.push(note)
+      if (!noteSelected) this.selected.unshift(note)
     },
     push (note, link) {
       if (note.key && note.key !== link) notes.changeKey(note.key, link)
