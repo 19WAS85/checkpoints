@@ -15,7 +15,7 @@
     </header>
     <ul class="mt-4 list-disc list-inside text-sm">
       <li v-for="note in notes" :key="note.key">
-        <a class="cursor-pointer underline text-blue-500"
+        <a class="cursor-pointer text-blue-500"
           :href="`#${note.key}`" @click="$emit('select', note)">
           {{ note.title }}
         </a>
