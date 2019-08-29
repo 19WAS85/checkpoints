@@ -4,16 +4,22 @@
       <div class="flex mb-2">
         <div class="w-1/2 pr-1">
           <input class="border border-gray-200 rounded py-1 px-2 w-full"
-            type="text" placeholder="Title" v-model="note.title">
+            type="text"
+            placeholder="Title"
+            v-model="note.title">
         </div>
         <div class="w-1/2">
           <input class="border border-gray-200 rounded py-1 px-2 w-full"
-            type="text" placeholder="Link" v-model="link">
+            type="text"
+            placeholder="Link"
+            v-model="link">
         </div>
       </div>
       <div class="mb-1">
         <textarea class="border border-gray-200 rounded py-1 px-2 w-full"
-          placeholder="Text" rows="5" v-model="note.text">
+          placeholder="Text"
+          rows="5"
+          v-model="note.text">
         </textarea>
       </div>
       <div class="flex">
@@ -23,8 +29,9 @@
         </div>
         <div class="w-1/2 text-right">
           <button
-            class="px-4 py-2 rounded-full bg-green-500 text-white font-bold"
-            @click="$emit('push', note, link)">Done
+            class="py-2 px-4 rounded shadow bg-green-500 text-white text-xs"
+            @click="$emit('push', note, link)">
+            Done
           </button>
         </div>
       </div>

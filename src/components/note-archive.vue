@@ -1,11 +1,12 @@
 <template>
   <section :id="$options.name" class="p-4 rounded shadow">
-    <header class="flex font-bold text-sm">
-      <h1 class="flex-1">All Notes</h1>
+    <header class="flex">
+      <h1 class="flex-1 text-sm font-bold">All Notes</h1>
       <div class="flex-1 text-white text-right">
-        <a href="#" class="px-2 py-1 rounded-full bg-green-500"
-          @click="$emit('create')">+
-        </a>
+        <button class="py-1 px-2 rounded shadow bg-green-500 text-xs"
+          @click="$emit('create')">
+          Add
+        </button>
       </div>
     </header>
     <ul class="mx-1 list-disc list-inside text-sm">

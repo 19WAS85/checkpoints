@@ -7,7 +7,7 @@
       <div class="w-3/4 p-1 m-1">
         <div class="mb-4" v-for="note in selected" :key="note.key">
           <note-edit v-if="note.edit" :note="note" @push="push" />
-          <note-view v-else :note="note" @dblclick="edit" />
+          <note-view v-else :note="note" @dblclick="edit" @close="close" />
         </div>
       </div>
     </div>
@@ -26,6 +26,10 @@ export default {
   methods: {
     edit (note) { note.edit = true },
     create () { this.selected.unshift(notes.create({ edit: true })) },
+    close (note) {
+      const index = this.selected.findIndex(n => n.key === note.key)
+      if (index > -1) this.selected.splice(index, 1)
+    },
     select (note) {
       const noteSelected = this.selected.find(n => n.key === note.key)
       if (!noteSelected) this.selected.unshift(note)
