@@ -27,7 +27,7 @@ const markdown = new MarkdownIt({ html: true, linkify: true })
 export default {
   name: 'note-view',
   props: { note: Object },
-  methods: { md (content) { return markdown.render(content) } }
+  methods: { md (content) { return content ? markdown.render(content) : null } }
 }
 </script>
 
