@@ -1,27 +1,39 @@
 import slugify from './slugify'
 
+const STORAGE_KEY = 'checkpoints.ARCHIVE'
 const KEY_MAX = 64
 const ARCHIVE = []
+
+const parse = (v) => {
+  return {
+    ...v,
+    edit: false,
+    created: new Date(v.created),
+    updated: v.updated ? new Date(v.updated) : null
+  }
+}
+
+const stored = localStorage.getItem(STORAGE_KEY)
+if (stored) JSON.parse(stored).forEach(v => ARCHIVE.push(parse(v)))
 
 const rawList = () => ARCHIVE
 
 const find = (key) => ARCHIVE.find(n => n.key === key)
 
 const set = (note) => {
+  note.updated = new Date()
   const index = ARCHIVE.findIndex(n => n.key === note.key)
-  if (index >= 0) {
-    note.updated = new Date()
-    ARCHIVE[index] = note
-  } else {
-    ARCHIVE.push(note)
-  }
+  if (index > -1) ARCHIVE[index] = note
+  else ARCHIVE.push(note)
   ARCHIVE.sort((a, b) => a.title > b.title ? 1 : -1)
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(ARCHIVE))
   return note
 }
 
 const create = ({ key, title, text, created, edit }) => {
   const note = { key, title, text, created, edit }
   if (!note.created) note.created = new Date()
+  note.updated = null
   return note
 }
 
@@ -38,13 +50,6 @@ const changeKey = (oldKey, newKey) => {
 const remove = (key) => {
   const index = ARCHIVE.findIndex(n => n.key === key)
   if (index > -1) ARCHIVE.splice(index, 1)
-}
-
-if (ARCHIVE.length === 0) {
-  push({
-    title: 'Lorem ipsum dolor sit amet',
-    text: '**Proin aliquet** quam _et convallis_ tristique.'
-  })
 }
 
 export default { rawList, find, push, create, changeKey, remove }
