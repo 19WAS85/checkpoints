@@ -15,6 +15,7 @@ const set = (note) => {
   } else {
     ARCHIVE.push(note)
   }
+  ARCHIVE.sort((a, b) => a.title > b.title ? 1 : -1)
   return note
 }
 
