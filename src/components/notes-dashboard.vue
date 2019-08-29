@@ -25,7 +25,7 @@ export default {
   components: { NoteArchive, NoteView, NoteEdit },
   methods: {
     edit (note) { note.edit = true },
-    create () { this.selected.unshift(notes.create({ edit: true })) },
+    create (title) { this.selected.unshift(notes.create({ title, edit: true })) },
     close (note) {
       const index = this.selected.findIndex(n => n.key === note.key)
       if (index > -1) this.selected.splice(index, 1)
