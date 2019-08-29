@@ -37,6 +37,7 @@ export default {
   },
   data () { return { selected: [], archive: null } },
   mounted () {
+    this.archive = notes.rawList()
     const openSlug = window.location.hash.substring(1)
     const openNote = openSlug ? notes.find(openSlug) : null
     if (openNote) this.selected.push(openNote)

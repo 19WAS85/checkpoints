@@ -5,7 +5,7 @@ const ARCHIVE = []
 
 const find = (slug) => ARCHIVE.find(i => i.slug === slug)
 
-const list = () => ARCHIVE.slice()
+const rawList = () => ARCHIVE
 
 const set = (item) => {
   const index = ARCHIVE.findIndex(i => i.slug === item.slug)
@@ -33,4 +33,4 @@ push(null,
   'Lorem ipsum dolor sit amet',
   '**Proin aliquet** quam et convallis tristique.')
 
-export default { list, find, create, push, size }
+export default { rawList, find, create, push, size }
