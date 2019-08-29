@@ -32,6 +32,11 @@
         </div>
         <div class="w-1/2 text-right">
           <button
+            class="py-2 px-4 mr-2 rounded shadow bg-gray-500 text-white text-xs"
+            @click="remove">
+            Remove
+          </button>
+          <button
             class="py-2 px-4 rounded shadow bg-green-500 text-white text-xs"
             @click="$emit('push', note, link)">
             Done
@@ -48,7 +53,14 @@ import slugify from '@/slugify'
 export default {
   name: 'note-edit',
   props: { note: Object },
-  methods: { updateLink () { this.link = slugify(this.note.title) } },
+  methods: {
+    updateLink () { this.link = slugify(this.note.title) },
+    remove () {
+      if (confirm(`Remove ${this.note.title}?`)) {
+        this.$emit('remove', this.note)
+      }
+    }
+  },
   data () { return { link: null } },
   mounted () { this.link = this.note.key }
 }

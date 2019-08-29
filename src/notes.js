@@ -31,6 +31,11 @@ const push = ({ key, title, text, created }) => {
 
 const changeKey = (oldKey, newKey) => { find(oldKey).key = newKey }
 
+const remove = (key) => {
+  const index = ARCHIVE.findIndex(n => n.key === key)
+  if (index > -1) ARCHIVE.splice(index, 1)
+}
+
 if (ARCHIVE.length === 0) {
   push({
     title: 'Lorem ipsum dolor sit amet',
@@ -38,4 +43,4 @@ if (ARCHIVE.length === 0) {
   })
 }
 
-export default { rawList, find, push, create, changeKey }
+export default { rawList, find, push, create, changeKey, remove }

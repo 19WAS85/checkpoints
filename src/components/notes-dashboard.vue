@@ -6,7 +6,7 @@
       </div>
       <div class="w-3/4 p-1 m-1">
         <div class="mb-4" v-for="note in selected" :key="note.key">
-          <note-edit v-if="note.edit" :note="note" @push="push" />
+          <note-edit v-if="note.edit" :note="note" @push="push" @remove="remove" />
           <note-view v-else :note="note" @dblclick="edit" @close="close" />
         </div>
       </div>
@@ -42,6 +42,10 @@ export default {
       if (note.key && note.key !== link) notes.changeKey(note.key, link)
       note.edit = false
       notes.push(note)
+    },
+    remove (note) {
+      notes.remove(note.key)
+      this.close(note)
     }
   },
   data () { return { selected: [], archive: null } },
