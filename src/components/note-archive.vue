@@ -5,7 +5,7 @@
       <div class="flex-1 text-white text-right">
         <button
           class="py-1 px-2 rounded shadow bg-green-500 text-xs"
-          @click="$emit('create', new Date().toLocaleDateString())">
+          @click="$emit('create', timeToString(new Date()))">
           Create
         </button>
       </div>
