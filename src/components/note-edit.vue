@@ -56,9 +56,8 @@ export default {
   methods: {
     updateLink () { this.link = slugify(this.note.title) },
     remove () {
-      if (confirm(`Remove ${this.note.title}?`)) {
-        this.$emit('remove', this.note)
-      }
+      const message = `Remove ${this.note.title}?`
+      if (confirm(message)) this.$emit('remove', this.note)
     }
   },
   data () { return { link: null } },

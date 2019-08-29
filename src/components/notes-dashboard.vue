@@ -46,6 +46,14 @@ export default {
     remove (note) {
       notes.remove(note.key)
       this.close(note)
+    },
+    addHashListener () {
+      window.addEventListener('hashchange', (event) => {
+        const key = event.newURL.split('#')[1]
+        const note = notes.find(key)
+        if (note) this.select(note)
+        else this.create(key)
+      }, false)
     }
   },
   data () { return { selected: [], archive: null } },
@@ -54,6 +62,7 @@ export default {
     const openKey = window.location.hash.substring(1)
     const openNote = openKey ? notes.find(openKey) : this.archive[0]
     if (openNote) this.selected.push(openNote)
+    this.addHashListener()
   }
 }
 </script>
