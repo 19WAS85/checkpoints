@@ -25,7 +25,7 @@ const set = (note) => {
   const index = ARCHIVE.findIndex(n => n.key === note.key)
   if (index > -1) ARCHIVE[index] = note
   else ARCHIVE.push(note)
-  ARCHIVE.sort((a, b) => a.title > b.title ? 1 : -1)
+  ARCHIVE.sort((a, b) => a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1)
   localStorage.setItem(STORAGE_KEY, JSON.stringify(ARCHIVE))
   return note
 }
