@@ -21,27 +21,42 @@ import NoteArchive from '@/components/note-archive'
 import NoteView from '@/components/note-view'
 import NoteEdit from '@/components/note-edit'
 
+const { location } = window
+
 export default {
   name: 'notes-dashboard',
   components: { NoteArchive, NoteView, NoteEdit },
   methods: {
     edit (note) { note.edit = true },
+    select (note) {
+      const isSelected = this.selected.find(n => n.key === note.key)
+      if (isSelected) this.removeSelected(note.key)
+      this.selected.unshift(note)
+      location.hash = note.key
+    },
+    removeSelected (key) {
+      const index = this.selected.findIndex(n => n.key === key)
+      if (index > -1) this.selected.splice(index, 1)
+    },
+    close (note) {
+      this.removeSelected(note.key)
+      const first = this.selected[0]
+      location.hash = first ? first.key : ''
+    },
     create (title) {
+      if (!title) return
       const key = slugify(title)
       this.selected.unshift(notes.create({ key, title, edit: true }))
     },
-    close (note) {
-      const index = this.selected.findIndex(n => n.key === note.key)
-      if (index > -1) this.selected.splice(index, 1)
-    },
-    select (note) {
-      const noteSelected = this.selected.find(n => n.key === note.key)
-      if (!noteSelected) this.selected.unshift(note)
-    },
     push (note, link) {
-      if (note.key && note.key !== link) notes.changeKey(note.key, link)
+      if (!note.title && !note.text) return
+      if (note.key && note.key !== link) {
+        notes.changeKey(note.key, link)
+        note.key = link
+      }
       note.edit = false
       notes.push(note)
+      location.hash = note.key
     },
     remove (note) {
       notes.remove(note.key)
@@ -59,9 +74,10 @@ export default {
   data () { return { selected: [], archive: null } },
   mounted () {
     this.archive = notes.rawList()
-    const openKey = window.location.hash.substring(1)
-    const openNote = openKey ? notes.find(openKey) : this.archive[0]
-    if (openNote) this.selected.push(openNote)
+    const key = location.hash.substring(1)
+    const note = key ? notes.find(key) : this.archive[0]
+    if (note) this.selected.unshift(note)
+    else this.create(key)
     this.addHashListener()
   }
 }

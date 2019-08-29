@@ -29,7 +29,10 @@ const push = ({ key, title, text, created }) => {
   return set(create({ key: noteKey, title, text, created }))
 }
 
-const changeKey = (oldKey, newKey) => { find(oldKey).key = newKey }
+const changeKey = (oldKey, newKey) => {
+  const note = find(oldKey)
+  if (note) note.key = newKey
+}
 
 const remove = (key) => {
   const index = ARCHIVE.findIndex(n => n.key === key)
