@@ -5,8 +5,8 @@ Vue.config.productionTip = false
 
 Vue.mixin({
   methods: {
-    dateToString: (date) => date.toJSON().slice(0, 10),
-    timeToString: (date) => date.toJSON().slice(0, 19).replace('T', ' ')
+    dateFormat: (date) => date.toJSON().slice(0, 10),
+    timeFormat: (date) => date.toJSON().slice(0, 19).replace('T', ' ')
   }
 })
 
