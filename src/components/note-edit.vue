@@ -4,7 +4,7 @@
       <div class="flex mb-2">
         <div class="w-1/2 pr-1">
           <input class="border border-gray-200 rounded py-1 px-2 w-full"
-            autofocus type="text" placeholder="Title" v-model="note.title">
+            type="text" placeholder="Title" v-model="note.title">
         </div>
         <div class="w-1/2">
           <input class="border border-gray-200 rounded py-1 px-2 w-full"

@@ -31,7 +31,7 @@ export default {
       if (!noteSelected) this.selected.push(note)
     },
     push (note) {
-      delete note.edit
+      note.edit = false
       notes.push(note)
     }
   },

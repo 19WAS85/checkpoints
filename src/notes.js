@@ -19,14 +19,15 @@ const set = (note) => {
 }
 
 const create = ({ key, title, text, created, edit }) => {
-  const note = { key, title, text }
-  note.created = created || new Date()
-  if (edit) note.edit = true
+  const note = { key, title, text, created, edit }
+  if (!note.created) note.created = new Date()
   return note
 }
 
+const rand = () => Math.random().toString().split('.')[1]
+
 const push = ({ key, title, text, created }) => {
-  const noteKey = slugify(key || title || text).substring(0, KEY_MAX)
+  const noteKey = slugify(key || title || text || rand()).substring(0, KEY_MAX)
   return set(create({ key: noteKey, title, text, created }))
 }
 
