@@ -1,7 +1,7 @@
 <template>
   <section :id="`${$options.name}-${note.slug}`"
     class="p-4 rounded shadow"
-    @dblclick="note.edit = true"
+    @dblclick="$emit('dblclick', note)"
     v-if="note">
     <header>
       <h1 :id="note.slug" class="font-bold text-xl">{{ note.title }}</h1>
