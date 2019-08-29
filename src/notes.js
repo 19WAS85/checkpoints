@@ -1,36 +1,40 @@
 import slugify from './slugify'
 
-const SLUG_MAX = 64
+const KEY_MAX = 64
 const ARCHIVE = []
-
-const find = (slug) => ARCHIVE.find(i => i.slug === slug)
 
 const rawList = () => ARCHIVE
 
-const set = (item) => {
-  const index = ARCHIVE.findIndex(i => i.slug === item.slug)
-  if (index >= 0) ARCHIVE[index] = item
-  else ARCHIVE.push(item)
+const find = (key) => ARCHIVE.find(n => n.key === key)
+
+const set = (note) => {
+  const index = ARCHIVE.findIndex(n => n.key === note.key)
+  if (index >= 0) {
+    note.updated = new Date()
+    ARCHIVE[index] = note
+  } else {
+    ARCHIVE.push(note)
+  }
+  return note
 }
 
-const create = ({ slug, title, text, edit = false } = { }) => {
-  const created = new Date()
-  return { slug, title, text, created, edit, updated: null }
+const create = ({ key, title, text, created, edit }) => {
+  const note = { key, title, text }
+  note.created = created || new Date()
+  if (edit) note.edit = true
+  return note
 }
 
-const push = (slug, title, text) => {
-  const itemSlug = slugify(slug || title).substring(0, SLUG_MAX)
-  const item = find(itemSlug) || create({ slug: itemSlug, title, text })
-  const newItem = { ...item, ...{ title, text } }
-  newItem.updated = new Date()
-  set(newItem)
-  return newItem
+const push = ({ key, title, text, created }) => {
+  const noteKey = slugify(key || title || text).substring(0, KEY_MAX)
+  return set(create({ key: noteKey, title, text, created }))
 }
 
-const size = () => Object.keys(ARCHIVE).length
+if (ARCHIVE.length === 0) {
+  push({
+    title: 'Lorem ipsum dolor sit amet',
+    text: '**Proin aliquet** quam et convallis tristique.'
+  })
+}
 
-push(null,
-  'Lorem ipsum dolor sit amet',
-  '**Proin aliquet** quam et convallis tristique.')
-
-export default { rawList, find, create, push, size }
+export default { rawList, find, push, create }

@@ -1,22 +1,19 @@
 <template>
-  <section :id="`${$options.name}-${note.slug || Math.random()}`" v-if="note">
-    <div class="text-sm">
-      <div class="mb-2">
-        <input class="border border-gray-200 rounded py-1 px-2 w-full"
-          type="text"
-          placeholder="Title"
-          v-model="note.title">
+  <section :id="`${$options.name}-${note.key || Math.random()}`" v-if="note">
+    <div class="text-sm p-4 rounded shadow">
+      <div class="flex mb-2">
+        <div class="w-1/2 pr-1">
+          <input class="border border-gray-200 rounded py-1 px-2 w-full"
+            autofocus type="text" placeholder="Title" v-model="note.title">
+        </div>
+        <div class="w-1/2">
+          <input class="border border-gray-200 rounded py-1 px-2 w-full"
+            type="text" placeholder="Key (Link)" v-model="note.key">
+        </div>
       </div>
-      <div class="mb-2">
-        <input class="border border-gray-200 rounded py-1 px-2 w-full"
-          type="text"
-          placeholder="Slug (Link)"
-          v-model="note.slug">
-      </div>
-      <div class="mb-2">
+      <div class="mb-1">
         <textarea class="border border-gray-200 rounded py-1 px-2 w-full"
-          placeholder="Text"
-          v-model="note.text">
+          placeholder="Text" rows="5" v-model="note.text">
         </textarea>
       </div>
       <div class="flex">
