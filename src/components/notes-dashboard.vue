@@ -40,7 +40,7 @@ export default {
     this.archive = notes.rawList()
     const openKey = window.location.hash.substring(1)
     const openNote = openKey ? notes.find(openKey) : this.archive[0]
-    this.selected.push(openNote)
+    if (openNote) this.selected.push(openNote)
   }
 }
 </script>
