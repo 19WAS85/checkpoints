@@ -8,8 +8,8 @@
         <note-archive :notes="archive" @select="select" @create="create" />
       </div>
       <div class="w-3/4 p-1 m-1">
-        <div v-for="note in selected" :key="note.slug">
-          <note-edit v-if="note.edit" :note="note" />
+        <div class="mb-4" v-for="note in selected" :key="note.slug">
+          <note-edit v-if="note.edit" :note="note" @push="push" />
           <note-view v-else :note="note" />
         </div>
       </div>
@@ -34,6 +34,11 @@ export default {
     create () {
       const newNote = notes.create({ edit: true })
       this.selected.push(newNote)
+    },
+    push (note) {
+      note.edit = false
+      notes.push(note.slug, note.title, note.text)
+      this.archive = notes.list()
     }
   },
   data () { return { selected: [], archive: null } },

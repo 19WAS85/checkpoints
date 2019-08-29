@@ -1,5 +1,5 @@
 <template>
-  <section :id="$options.name"
+  <section :id="`${$options.name}-${note.slug}`"
     class="p-4 rounded shadow"
     @dblclick="note.edit = true"
     v-if="note">
