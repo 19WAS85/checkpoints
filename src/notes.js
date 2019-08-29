@@ -34,7 +34,7 @@ const changeKey = (oldKey, newKey) => { find(oldKey).key = newKey }
 if (ARCHIVE.length === 0) {
   push({
     title: 'Lorem ipsum dolor sit amet',
-    text: '**Proin aliquet** quam et convallis tristique.'
+    text: '**Proin aliquet** quam _et convallis_ tristique.'
   })
 }
 

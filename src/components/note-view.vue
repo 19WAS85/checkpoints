@@ -9,7 +9,7 @@
     <div class="text-xs text-gray-500">
       {{ note.created.toLocaleDateString() }} • #{{ note.key }}
     </div>
-    <div class="my-2 text-gray-800 text-base">{{ note.text }}</div>
+    <div class="my-2 text-gray-700 text-base" v-html="md(note.text)"></div>
     <button class="absolute top-0 right-0 mt-4 mr-4 py-1 px-2 rounded shadow bg-gray-400 text-xs text-white"
       @click="$emit('close', note)">
       Close
@@ -18,8 +18,13 @@
 </template>
 
 <script>
+import MarkdownIt from 'markdown-it'
+
+const markdown = new MarkdownIt()
+
 export default {
   name: 'note-view',
-  props: { note: Object }
+  props: { note: Object },
+  methods: { md (content) { return markdown.render(content) } }
 }
 </script>

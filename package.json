@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "markdown-it": "^9.1.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {
