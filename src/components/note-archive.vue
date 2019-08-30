@@ -1,7 +1,7 @@
 <template>
   <section :id="$options.name" class="p-4 rounded shadow">
     <header class="flex">
-      <h1 class="py-1 flex-1 text-sm font-bold">Notes</h1>
+      <h1 class="py-1 flex-1 text-sm font-bold">Archive</h1>
       <div class="flex-1 text-white text-right">
         <button
           class="py-1 px-2 rounded shadow bg-green-500 text-xs"

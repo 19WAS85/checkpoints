@@ -1,8 +1,9 @@
 <template>
-  <section :id="`${$options.name}-${note.key}`"
+  <section
+    :id="`${$options.name}-${note.key}`"
     class="relative p-4 rounded shadow"
     v-if="note">
-    <header @dblclick="$emit('edit', note)">
+  <header @dblclick="$emit('edit', note)">
       <h1 :id="note.key" class="font-bold text-xl">{{ note.title }}</h1>
       <div class="text-xs text-gray-500">
         {{ note.created.toLocaleDateString() }} •
@@ -10,10 +11,12 @@
         <button class="underline" @click="$emit('edit', note)">Edit</button>
       </div>
     </header>
-    <div class="note-content my-2 text-gray-700 text-sm"
+    <div
+      class="note-content my-2 text-gray-800 text-sm"
       v-html="md(note.text)">
     </div>
-    <button class="absolute top-0 right-0 mt-4 mr-4 py-1 px-2 rounded shadow bg-gray-400 text-xs text-white"
+    <button
+      class="absolute top-0 right-0 mt-4 mr-4 py-1 px-2 rounded shadow bg-gray-500 text-xs text-white"
       @click="$emit('close', note)">
       Close
     </button>

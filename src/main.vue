@@ -1,7 +1,9 @@
 <template>
   <section :id="$options.name" class="container mx-auto">
-    <header class="w-full p-2 font-bold text-gray-400">
-      <h1><a href="/">Checkpoints</a></h1>
+    <header class="w-full p-2">
+      <h1 class="font-light text-gray-400">
+        <a href="/">Checkpoints</a>
+      </h1>
     </header>
     <notes-dashboard />
   </section>
