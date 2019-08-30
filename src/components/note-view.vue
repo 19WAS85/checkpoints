@@ -8,7 +8,12 @@
       <div class="text-xs text-gray-500">
         {{ note.created.toLocaleDateString() }} •
         #{{ note.key }} •
-        <button class="underline" @click="$emit('edit', note)">Edit</button>
+        <button
+          data-hotkey="e"
+          class="underline"
+          @click="$emit('edit', note)">
+          Edit
+        </button>
       </div>
     </header>
     <div
@@ -16,6 +21,7 @@
       v-html="md(note.text)">
     </div>
     <button
+      data-hotkey="w"
       class="absolute top-0 right-0 mt-4 mr-4 py-1 px-2 rounded shadow bg-gray-500 text-xs text-white"
       @click="$emit('close', note)">
       Close

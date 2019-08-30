@@ -4,9 +4,9 @@
       <div class="flex mb-2">
         <div class="w-1/2 pr-1">
           <input class="border border-gray-200 rounded py-1 px-2 w-full"
-            autofocus
             type="text"
             placeholder="Title"
+            :autofocus="note.title.length == 0"
             v-model="note.title"
             @blur="updateLink">
         </div>
@@ -19,7 +19,9 @@
       </div>
       <div class="mb-1">
         <textarea class="border border-gray-200 rounded py-1 px-2 w-full"
+          rows="10"
           placeholder="Text"
+          :autofocus="note.text"
           v-model="note.text">
         </textarea>
       </div>
@@ -30,11 +32,13 @@
         </div>
         <div class="w-1/2 text-right">
           <button
+            data-hotkey="r"
             class="py-2 px-4 mr-2 rounded shadow bg-gray-500 text-white text-xs"
             @click="remove">
             Remove
           </button>
           <button
+            data-hotkey="d"
             class="py-2 px-4 rounded shadow bg-green-500 text-white text-xs"
             @click="$emit('push', note, link)">
             Done
@@ -52,7 +56,9 @@ export default {
   name: 'note-edit',
   props: { note: Object },
   methods: {
-    updateLink () { this.link = slugify(this.note.title) },
+    updateLink () {
+      if (!this.link) this.link = slugify(this.note.title)
+    },
     remove () {
       const message = `Remove ${this.note.title}?`
       if (confirm(message)) this.$emit('remove', this.note)

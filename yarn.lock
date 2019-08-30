@@ -670,6 +670,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@github/hotkey@^1.2.4":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@github/hotkey/-/hotkey-1.2.4.tgz#18c20560c8e2b7f192c7076d65c95798df4ba626"
+  integrity sha512-QWkTbykOktjsrjlykcBWY07iZ8/vHeVuUPrBfuHD5czZX2zn3zYR2sxmVhJhnh8UoRSL1g5x3AQR0xbPFkif+w==
+
 "@hapi/address@2.x.x":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.0.0.tgz#9f05469c88cb2fd3dcd624776b54ee95c312126a"

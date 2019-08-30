@@ -11,15 +11,17 @@
       </h1>
     </header>
     <notes-dashboard />
+    <notes-footer />
   </section>
 </template>
 
 <script>
 import NotesDashboard from '@/components/notes-dashboard'
+import NotesFooter from '@/components/notes-footer'
 
 export default {
   name: 'checkpoints-main',
-  components: { NotesDashboard }
+  components: { NotesDashboard, NotesFooter }
 }
 </script>
 

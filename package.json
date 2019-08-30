@@ -9,6 +9,7 @@
     "dev": "yarn serve --mode=development"
   },
   "dependencies": {
+    "@github/hotkey": "^1.2.4",
     "core-js": "^2.6.5",
     "markdown-it": "^9.1.0",
     "markdown-it-hashtag": "^0.4.0",
