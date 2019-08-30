@@ -21,7 +21,7 @@
         <textarea class="border border-gray-200 rounded py-1 px-2 w-full"
           autofocus
           placeholder="Text"
-          rows="5"
+          rows="10"
           v-model="note.text">
         </textarea>
       </div>

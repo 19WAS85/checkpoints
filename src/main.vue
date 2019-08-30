@@ -1,8 +1,13 @@
 <template>
   <section :id="$options.name" class="container mx-auto">
-    <header class="w-full p-2">
-      <h1 class="font-light text-gray-400">
-        <a href="/">Checkpoints</a>
+    <header class="w-full px-3 py-1">
+      <h1>
+        <a href="/" class="inline-block align-middle opacity-50">
+          <img class="w-8 mr-2 inline-block" src="/open-book.png">
+          <span class="inline-block align-middle font-light text-lg">
+            Checkpoints
+          </span>
+        </a>
       </h1>
     </header>
     <notes-dashboard />
