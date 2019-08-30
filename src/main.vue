@@ -1,6 +1,6 @@
 <template>
   <section :id="$options.name" class="container mx-auto">
-    <header class="w-full px-3 py-1">
+    <header class="w-full px-4 pt-2 pb-1">
       <h1>
         <a href="/" class="inline-block align-middle opacity-50">
           <img class="w-8 mr-2 inline-block" src="/open-book.png">

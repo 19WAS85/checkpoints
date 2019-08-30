@@ -13,7 +13,8 @@
           <input class="border border-gray-200 rounded py-1 px-2 w-full"
             type="text"
             placeholder="Hashtag Name (Link)"
-            v-model="link">
+            v-model="link"
+            @blur="updateLink">
         </div>
       </div>
       <div class="mb-1">
@@ -55,9 +56,7 @@ export default {
   name: 'note-edit',
   props: { note: Object },
   methods: {
-    updateLink () {
-      if (!this.link) this.link = slugify(this.note.title)
-    },
+    updateLink () { if (!this.link) this.link = slugify(this.note.title) },
     remove () {
       const message = `Remove ${this.note.title}?`
       if (confirm(message)) this.$emit('remove', this.note)

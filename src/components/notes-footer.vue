@@ -7,7 +7,7 @@
       <kbd class="inline-block w-4 ml-2 rounded bg-gray-100 font-bold">E</kbd> Edit
       <kbd class="inline-block w-4 ml-2 rounded bg-gray-100 font-bold">R</kbd> Remove
       <kbd class="inline-block w-4 ml-2 rounded bg-gray-100 font-bold">D</kbd> Done
-      <kbd class="inline-block w-4 ml-2 rounded bg-gray-100 font-bold">W</kbd> Close
+      <kbd class="inline-block w-4 ml-2 rounded bg-gray-100 font-bold">C</kbd> Close
     </span>
   </footer>
 </template>

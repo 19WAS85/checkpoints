@@ -21,7 +21,7 @@
       v-html="md(note.text)">
     </div>
     <button
-      data-hotkey="w"
+      data-hotkey="c"
       class="absolute top-0 right-0 mt-4 mr-4 py-1 px-2 rounded shadow bg-gray-500 text-xs text-white"
       @click="$emit('close', note)">
       Close
