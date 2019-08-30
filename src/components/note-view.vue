@@ -35,9 +35,11 @@ import Hashtags from 'markdown-it-hashtag'
 
 const options = { html: true, linkify: true }
 const markdown = new MarkdownIt(options).use(Hashtags)
-markdown.renderer.rules.hashtag_open = (tokens, idx) => {
-  return `<a href="#${tokens[idx].content.toLowerCase()}">`
-}
+const rules = markdown.renderer.rules
+
+rules.hashtag_open = (t, i) => `<a href="#${t[i].content.toLowerCase()}">`
+rules.hashtag_text = (t, i) => t[i].content
+rules.hashtag_close = (t, i) => '</a>'
 
 export default {
   name: 'note-view',
@@ -62,6 +64,7 @@ export default {
 .note-content code { border: 1px solid #EDF2F7; border-radius: .25rem }
 .note-content pre { margin: .75rem 0; padding: .5rem; background-color: #F7FAFC }
 .note-content pre { border: 1px solid #EDF2F7; border-radius: .25rem }
+.note-content pre { overflow-y: auto }
 .note-content pre code { padding: 0; border: none }
 .note-content blockquote { margin: 0rem 1rem; font-style: italic }
 .note-content ul { margin: 0 1rem; list-style: disc inside }
