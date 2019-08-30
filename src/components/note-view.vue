@@ -25,8 +25,13 @@
 
 <script>
 import MarkdownIt from 'markdown-it'
+import Hashtags from 'markdown-it-hashtag'
 
-const markdown = new MarkdownIt({ html: true, linkify: true })
+const options = { html: true, linkify: true }
+const markdown = new MarkdownIt(options).use(Hashtags)
+markdown.renderer.rules.hashtag_open = (tokens, idx) => {
+  return `<a href="#${tokens[idx].content.toLowerCase()}">`
+}
 
 export default {
   name: 'note-view',
