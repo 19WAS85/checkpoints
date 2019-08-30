@@ -1,10 +1,10 @@
 <template>
   <section
-    :id="`${$options.name}-${note.key}`"
+    :id="note.key"
     class="relative p-4 rounded shadow"
     v-if="note">
-  <header @dblclick="$emit('edit', note)">
-      <h1 :id="note.key" class="font-bold text-xl">{{ note.title }}</h1>
+    <header @dblclick="$emit('edit', note)">
+      <h1 class="font-bold text-xl">{{ note.title }}</h1>
       <div class="text-xs text-gray-500">
         {{ note.created.toLocaleDateString() }} •
         #{{ note.key }} •

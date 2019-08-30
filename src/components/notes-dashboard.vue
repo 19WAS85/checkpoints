@@ -40,6 +40,7 @@ export default {
     },
     close (note) {
       this.removeSelected(note.key)
+      window.scrollTo(0, 0)
       const first = this.selected[0]
       location.hash = first ? first.key : ''
     },

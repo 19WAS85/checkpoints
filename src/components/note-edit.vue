@@ -1,5 +1,5 @@
 <template>
-  <section :id="`${$options.name}-${note.key || Math.random()}`" v-if="note">
+  <section :id="`${$options.name}-${note.key}`" v-if="note">
     <div class="text-sm p-4 rounded shadow">
       <div class="flex mb-2">
         <div class="w-1/2 pr-1">
@@ -13,15 +13,13 @@
         <div class="w-1/2">
           <input class="border border-gray-200 rounded py-1 px-2 w-full"
             type="text"
-            placeholder="Link"
+            placeholder="Hashtag Name (Link)"
             v-model="link">
         </div>
       </div>
       <div class="mb-1">
         <textarea class="border border-gray-200 rounded py-1 px-2 w-full"
-          autofocus
           placeholder="Text"
-          rows="10"
           v-model="note.text">
         </textarea>
       </div>
