@@ -1,14 +1,15 @@
 <template>
   <section :id="`${$options.name}-${note.key}`"
     class="relative p-4 rounded shadow"
-    @dblclick="$emit('dblclick', note)"
     v-if="note">
-    <header>
+    <header @dblclick="$emit('edit', note)">
       <h1 :id="note.key" class="font-bold text-xl">{{ note.title }}</h1>
+      <div class="text-xs text-gray-500">
+        {{ note.created.toLocaleDateString() }} •
+        #{{ note.key }} •
+        <button class="underline" @click="$emit('edit', note)">Edit</button>
+      </div>
     </header>
-    <div class="text-xs text-gray-500">
-      {{ note.created.toLocaleDateString() }} • #{{ note.key }}
-    </div>
     <div class="note-content my-2 text-gray-700 text-sm"
       v-html="md(note.text)">
     </div>
@@ -40,11 +41,15 @@ export default {
 .note-content h6 { margin: .75rem 0; font-size: .75rem }
 .note-content a { color: #4299E1 }
 .note-content p { margin: 1rem 0 }
+.note-content table { width: 100% }
+.note-content th { background-color: #F7FAFC }
+.note-content tr { border-bottom: 1px solid #E2E8F0 }
 .note-content code { padding: .125rem .25rem; background-color: #F7FAFC }
 .note-content code { border: 1px solid #EDF2F7; border-radius: .25rem }
 .note-content pre { margin: .75rem 0; padding: .5rem; background-color: #F7FAFC }
 .note-content pre { border: 1px solid #EDF2F7; border-radius: .25rem }
 .note-content pre code { padding: 0; border: none }
-.note-content ul{ margin: .75rem 0.5rem }
-.note-content li { list-style: disc inside }
+.note-content blockquote { margin: 0rem 1rem; font-style: italic }
+.note-content ul { margin: 0 1rem; list-style: disc inside }
+.note-content ol { margin: 0 1rem; list-style: decimal inside }
 </style>

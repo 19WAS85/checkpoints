@@ -7,7 +7,7 @@
       <div class="w-3/4 p-1 m-1">
         <div class="mb-4" v-for="note in selected" :key="note.key">
           <note-edit v-if="note.edit" :note="note" @push="push" @remove="remove" />
-          <note-view v-else :note="note" @dblclick="edit" @close="close" />
+          <note-view v-else :note="note" @edit="edit" @close="close" />
         </div>
       </div>
     </div>
