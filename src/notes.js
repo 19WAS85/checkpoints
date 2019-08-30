@@ -50,6 +50,7 @@ const changeKey = (oldKey, newKey) => {
 const remove = (key) => {
   const index = ARCHIVE.findIndex(n => n.key === key)
   if (index > -1) ARCHIVE.splice(index, 1)
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(ARCHIVE))
 }
 
 export default { rawList, find, push, create, changeKey, remove }
