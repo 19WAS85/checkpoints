@@ -6,7 +6,6 @@
           <input class="border border-gray-200 rounded py-1 px-2 w-full"
             type="text"
             placeholder="Title"
-            :autofocus="note.title.length == 0"
             v-model="note.title"
             @blur="updateLink">
         </div>
@@ -21,7 +20,7 @@
         <textarea class="border border-gray-200 rounded py-1 px-2 w-full"
           rows="10"
           placeholder="Text"
-          :autofocus="note.text"
+          :autofocus="note.updated"
           v-model="note.text">
         </textarea>
       </div>

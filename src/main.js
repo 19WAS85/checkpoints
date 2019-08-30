@@ -1,4 +1,4 @@
-import { install as hotkey } from '@github/hotkey'
+import { install, uninstall } from '@github/hotkey'
 import Vue from 'vue'
 import App from './main.vue'
 
@@ -10,7 +10,10 @@ Vue.mixin({
   },
   mounted () {
     const hotkeysElements = document.querySelectorAll('[data-hotkey]')
-    for (const el of hotkeysElements) hotkey(el)
+    for (const el of hotkeysElements) {
+      uninstall(el)
+      install(el)
+    }
   }
 })
 
