@@ -1,6 +1,6 @@
 <template>
   <footer :id="$options.name"
-    class="mt-2 py-2 border-t border-gray-200 text-gray-500 text-xs text-center">
+    class="mt-2 text-gray-500 text-xs text-center">
     <div>
       Keyboard Shortcuts:
       <span class="inline-block">
