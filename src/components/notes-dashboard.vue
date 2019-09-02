@@ -2,7 +2,7 @@
   <section :id="$options.name">
     <div class="flex">
       <div class="w-1/4 p-1 m-1">
-        <note-archive :notes="archive" @select="select" @create="create" />
+        <note-archive :notes="notes" @select="select" @create="create" />
       </div>
       <div class="w-3/4 p-1 m-1">
         <div class="mb-4" v-for="note in selected" :key="note.key">
@@ -11,12 +11,12 @@
         </div>
       </div>
     </div>
-    <notes-footer :notes="archive" />
+    <notes-footer :notes="notes" />
   </section>
 </template>
 
 <script>
-import notes from '@/notes'
+import archive from '@/archive'
 import slugify from '@/slugify'
 import NoteArchive from '@/components/note-archive'
 import NoteView from '@/components/note-view'
@@ -49,36 +49,36 @@ export default {
     create (title) {
       if (!title) return
       const key = slugify(title)
-      this.selected.unshift(notes.create({ key, title, edit: true }))
+      this.selected.unshift(archive.create({ key, title, edit: true }))
     },
     push (note, link) {
       if (!note.title && !note.text) return
       if (note.key && note.key !== link) {
-        notes.changeKey(note.key, link)
+        archive.changeKey(note.key, link)
         note.key = link
       }
       note.edit = false
-      notes.push(note)
+      archive.push(note)
       location.hash = note.key
     },
     remove (note) {
-      notes.remove(note.key)
+      archive.remove(note.key)
       this.close(note)
     },
     addHashListener () {
       window.addEventListener('hashchange', (event) => {
         const key = event.newURL.split('#')[1]
-        const note = notes.find(key)
+        const note = archive.find(key)
         if (note) this.select(note)
         else this.create(key)
       }, false)
     }
   },
-  data () { return { selected: [], archive: null } },
+  data () { return { selected: [], notes: null } },
   mounted () {
-    this.archive = notes.rawList()
+    this.notes = archive.list()
     const key = location.hash.substring(1)
-    const note = key ? notes.find(key) : this.archive[0]
+    const note = key ? archive.find(key) : this.notes[0]
     if (note) this.selected.unshift(note)
     else this.create(key)
     this.addHashListener()
