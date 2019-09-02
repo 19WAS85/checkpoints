@@ -12,20 +12,26 @@
       </span>
     </div>
     <div class="mt-2" v-if="notes">
-      {{ this.notes.length }} Archive Notes
       <button
         class="underline text-gray-500 text-xs"
-        @click="show">
-        Export All
+        @click="show(notes)">
+        {{ this.notes.length }} archive notes
+      </button> •
+      <button
+        class="underline text-gray-500 text-xs"
+        @click="show(trash)">
+        {{ this.trash.length }} on trash
       </button>
     </div>
-    <div v-if="archiveJSON">
+    <div class="mt-2" v-if="trash">
+    </div>
+    <div v-if="jsonData">
       <input
-        id="export-data"
+        id="json-data"
         class="w-full font-mono text-gray-800"
         onfocus="this.select()"
         type="text"
-        v-model="archiveJSON">
+        v-model="jsonData">
     </div>
   </footer>
 </template>
@@ -35,13 +41,13 @@ import Vue from 'vue'
 
 export default {
   name: 'notes-footer',
-  props: { notes: Array },
+  props: { notes: Array, trash: Array },
   methods: {
-    show () {
-      this.archiveJSON = JSON.stringify(this.notes)
-      Vue.nextTick(() => document.getElementById('export-data').focus())
+    show (collection) {
+      this.jsonData = JSON.stringify(collection)
+      Vue.nextTick(() => document.getElementById('json-data').focus())
     }
   },
-  data () { return { archiveJSON: null } }
+  data () { return { jsonData: null } }
 }
 </script>

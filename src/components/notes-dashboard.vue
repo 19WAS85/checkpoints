@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <notes-footer :notes="notes" />
+    <notes-footer :notes="notes" :trash="trash" />
   </section>
 </template>
 
@@ -74,9 +74,10 @@ export default {
       }, false)
     }
   },
-  data () { return { selected: [], notes: null } },
+  data () { return { selected: [], notes: null, trash: null } },
   mounted () {
     this.notes = archive.list()
+    this.trash = archive.trash()
     const key = location.hash.substring(1)
     const note = key ? archive.find(key) : this.notes[0]
     if (note) this.selected.unshift(note)
