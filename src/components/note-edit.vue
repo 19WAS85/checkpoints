@@ -3,7 +3,8 @@
     <div class="text-sm p-4 rounded shadow">
       <div class="flex mb-2">
         <div class="w-1/2 pr-1">
-          <input class="border border-gray-200 rounded py-1 px-2 w-full"
+          <input
+            class="border border-gray-200 rounded py-1 px-2 w-full"
             type="text"
             placeholder="Title"
             onfocus="this.select()"
@@ -12,7 +13,8 @@
             @blur="updateLink">
         </div>
         <div class="w-1/2">
-          <input class="border border-gray-200 rounded py-1 px-2 w-full"
+          <input
+            class="border border-gray-200 text-gray-500 font-mono rounded py-1 px-2 w-full"
             type="text"
             onfocus="this.select()"
             placeholder="Hashtag Name (Link)"
