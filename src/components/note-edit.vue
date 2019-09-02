@@ -6,12 +6,15 @@
           <input class="border border-gray-200 rounded py-1 px-2 w-full"
             type="text"
             placeholder="Title"
+            onfocus="this.select()"
+            :autofocus="!note.updated"
             v-model="note.title"
             @blur="updateLink">
         </div>
         <div class="w-1/2">
           <input class="border border-gray-200 rounded py-1 px-2 w-full"
             type="text"
+            onfocus="this.select()"
             placeholder="Hashtag Name (Link)"
             v-model="link"
             @blur="updateLink">
@@ -56,7 +59,9 @@ export default {
   name: 'note-edit',
   props: { note: Object },
   methods: {
-    updateLink () { if (!this.link) this.link = slugify(this.note.title) },
+    updateLink () {
+      if (!this.link || !this.updated) this.link = slugify(this.note.title)
+    },
     remove () {
       const message = `Remove ${this.note.title}?`
       if (confirm(message)) this.$emit('remove', this.note)
