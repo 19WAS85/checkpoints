@@ -2,7 +2,7 @@
   <section :id="$options.name">
     <div class="flex">
       <div class="w-1/4 p-1 m-1">
-        <note-archive :notes="notes" @select="select" @create="create" />
+        <notes-archive :notes="notes" @select="select" @create="create" />
       </div>
       <div class="w-3/4 p-1 m-1">
         <div class="mb-4" v-for="note in selected" :key="note.key">
@@ -18,7 +18,7 @@
 <script>
 import archive from '@/archive'
 import slugify from '@/slugify'
-import NoteArchive from '@/components/note-archive'
+import NotesArchive from '@/components/notes-archive'
 import NoteView from '@/components/note-view'
 import NoteEdit from '@/components/note-edit'
 import NotesFooter from '@/components/notes-footer'
@@ -27,7 +27,7 @@ const { location } = window
 
 export default {
   name: 'notes-dashboard',
-  components: { NoteArchive, NoteView, NoteEdit, NotesFooter },
+  components: { NotesArchive, NoteView, NoteEdit, NotesFooter },
   methods: {
     edit (note) { note.edit = true },
     select (note) {

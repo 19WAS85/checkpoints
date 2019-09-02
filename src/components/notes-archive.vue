@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: 'note-archive',
+  name: 'notes-archive',
   props: { notes: Array }
 }
 </script>
