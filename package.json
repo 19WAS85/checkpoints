@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "author": "Wagner Andrade <wagner@wedy.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/19WAS85/checkpoints.git"
+  },
   "scripts": {
     "lint": "vue-cli-service lint --fix",
     "build": "vue-cli-service build --mode=production",
