@@ -37,16 +37,16 @@
         </div>
         <div class="w-1/2 text-right">
           <button
-            data-hotkey="r"
-            class="py-2 px-4 mr-2 rounded shadow bg-gray-500 text-white text-xs"
-            @click="remove">
-            Remove
-          </button>
-          <button
             data-hotkey="d"
-            class="py-2 px-4 rounded shadow bg-green-500 text-white text-xs"
+            class="py-2 px-4 mr-2 rounded shadow bg-green-500 text-white text-xs"
             @click="$emit('push', note, link)">
             Done
+          </button>
+          <button
+            data-hotkey="r"
+            class="py-1 px-2 underline text-gray-500 text-xs"
+            @click="remove">
+            Remove
           </button>
         </div>
       </div>
