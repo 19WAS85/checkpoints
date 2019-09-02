@@ -2,12 +2,24 @@
   <section :id="$options.name">
     <div class="flex">
       <div class="w-1/4 p-1 m-1">
-        <notes-archive :notes="notes" @select="select" @create="create" />
+        <notes-archive
+          :notes="notes"
+          @select="select"
+          @create="create"
+          @push="push" />
       </div>
       <div class="w-3/4 p-1 m-1">
         <div class="mb-4" v-for="note in selected" :key="note.key">
-          <note-edit v-if="note.edit" :note="note" @push="push" @remove="remove" />
-          <note-view v-else :note="note" @edit="edit" @close="close" />
+          <note-edit
+            v-if="note.edit"
+            :note="note"
+            @push="push"
+            @remove="remove" />
+          <note-view
+            v-else
+            :note="note"
+            @edit="edit"
+            @close="close" />
         </div>
       </div>
     </div>
@@ -53,7 +65,7 @@ export default {
     },
     push (note, link) {
       if (!note.title && !note.text) return
-      if (note.key && note.key !== link) {
+      if (link && note.key && note.key !== link) {
         archive.changeKey(note.key, link)
         note.key = link
       }

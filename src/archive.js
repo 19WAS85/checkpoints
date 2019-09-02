@@ -29,7 +29,7 @@ const set = (note) => {
 }
 
 const push = ({ key, title, text, created }) => {
-  const noteKey = slugify(key || title || text).substring(0, KEY_MAX_SIZE)
+  const noteKey = slugify(key || title).substring(0, KEY_MAX_SIZE)
   return set(create({ key: noteKey, title, text, created }))
 }
 

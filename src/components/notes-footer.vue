@@ -15,12 +15,12 @@
       <button
         class="underline text-gray-500 text-xs"
         @click="show(notes)">
-        {{ this.notes.length }} archive notes
+        <strong>{{ this.notes.length }}</strong> notes at archive
       </button> •
       <button
         class="underline text-gray-500 text-xs"
         @click="show(trash)">
-        {{ this.trash.length }} on trash
+        <strong>{{ this.trash.length }}</strong> on trash
       </button>
     </div>
     <div class="mt-2" v-if="trash">
