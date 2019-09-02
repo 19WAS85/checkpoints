@@ -2,7 +2,7 @@
   <section :id="$options.name" class="container mx-auto">
     <header class="w-full px-4 pt-2 pb-1">
       <h1>
-        <a href="/" class="inline-block align-bottom opacity-50">
+        <a href="." class="inline-block align-bottom opacity-50">
           <img class="w-8 mr-2 inline-block" src="open-book.png">
           <span class="inline-block align-bottom font-light text-lg">
             Checkpoints
