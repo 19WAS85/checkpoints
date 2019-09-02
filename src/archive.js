@@ -5,8 +5,8 @@ const ARCHIVE_KEY = 'checkpoints.ARCHIVE'
 const TRASH_KEY = 'checkpoints.TRASH'
 const KEY_MAX_SIZE = 64
 
-const ARCHIVE = store.load(ARCHIVE_KEY)
-const TRASH = store.load(TRASH_KEY)
+const ARCHIVE = store.load(ARCHIVE_KEY) || []
+const TRASH = store.load(TRASH_KEY) || []
 
 const create = (values) => store.parse(values)
 const find = (key) => ARCHIVE.find(n => n.key === key)
@@ -46,5 +46,7 @@ const remove = (key) => {
   ARCHIVE.splice(index, 1)
   save()
 }
+
+if (ARCHIVE.length === 0) store.start().forEach(n => push(n))
 
 export default { create, find, list, trash, push, changeKey, remove }
