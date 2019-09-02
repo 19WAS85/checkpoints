@@ -11,6 +11,7 @@
         </div>
       </div>
     </div>
+    <notes-footer :notes="archive" />
   </section>
 </template>
 
@@ -20,12 +21,13 @@ import slugify from '@/slugify'
 import NoteArchive from '@/components/note-archive'
 import NoteView from '@/components/note-view'
 import NoteEdit from '@/components/note-edit'
+import NotesFooter from '@/components/notes-footer'
 
 const { location } = window
 
 export default {
   name: 'notes-dashboard',
-  components: { NoteArchive, NoteView, NoteEdit },
+  components: { NoteArchive, NoteView, NoteEdit, NotesFooter },
   methods: {
     edit (note) { note.edit = true },
     select (note) {
