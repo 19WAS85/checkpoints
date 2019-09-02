@@ -14,3 +14,5 @@ git add . -A
 git commit -m 'Deploy'
 git push
 git checkout master
+git push
+git push --tags
