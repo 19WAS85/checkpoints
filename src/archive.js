@@ -8,7 +8,7 @@ const KEY_MAX_SIZE = 64
 const ARCHIVE = store.load(ARCHIVE_KEY) || []
 const TRASH = store.load(TRASH_KEY) || []
 
-const create = (values) => store.parse(values)
+const create = store.parse
 const find = (key) => ARCHIVE.find(n => n.key === key)
 const list = () => ARCHIVE
 const trash = () => TRASH
