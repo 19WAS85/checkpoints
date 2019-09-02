@@ -1,6 +1,9 @@
 #!/bin/sh
-rm -rf node_modules dist
+
+# rm -rf node_modules
+rm -rf dist
 yarn install
+npm version patch
 yarn build
 git checkout gh-pages
 git rm -rf .
