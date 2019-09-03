@@ -23,10 +23,10 @@
       </ul>
       <div v-if="jsonData || importing" class="text-gray-500">
         <textarea
-          placeholder="Copy Database and Press Import"
+          placeholder="Paste Database and Press Import"
           id="json-data"
           rows="10"
-          class="w-full font-mono text-xs mt-2"
+          class="p-2 w-full font-mono text-xs mt-2"
           onfocus="this.select()"
           v-model="jsonData">
         </textarea>
