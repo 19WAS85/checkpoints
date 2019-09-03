@@ -11,43 +11,13 @@
         <kbd class="p-1 ml-2 rounded bg-gray-100 font-bold">C</kbd> Close
       </span>
     </div>
-    <div class="mt-2" v-if="notes">
-      <button
-        class="underline text-gray-500 text-xs"
-        @click="show(notes)">
-        <strong>{{ this.notes.length }}</strong> notes at archive
-      </button> •
-      <button
-        class="underline text-gray-500 text-xs"
-        @click="show(trash)">
-        <strong>{{ this.trash.length }}</strong> on trash
-      </button>
-    </div>
-    <div class="mt-2" v-if="trash">
-    </div>
-    <div v-if="jsonData">
-      <input
-        id="json-data"
-        class="w-full font-mono text-gray-800"
-        onfocus="this.select()"
-        type="text"
-        v-model="jsonData">
-    </div>
   </footer>
 </template>
 
 <script>
-import Vue from 'vue'
-
 export default {
   name: 'notes-footer',
-  props: { notes: Array, trash: Array },
-  methods: {
-    show (collection) {
-      this.jsonData = JSON.stringify(collection)
-      Vue.nextTick(() => document.getElementById('json-data').focus())
-    }
-  },
+  props: { notes: Array },
   data () { return { jsonData: null } }
 }
 </script>

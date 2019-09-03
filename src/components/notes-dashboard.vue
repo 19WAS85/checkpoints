@@ -5,8 +5,8 @@
         <notes-archive
           :notes="notes"
           @select="select"
-          @create="create"
-          @push="push" />
+          @create="create" />
+        <notes-info class="mt-4" :notes="notes" :trash="trash" @push="push"/>
       </div>
       <div class="w-3/4 p-1 m-1">
         <div class="mb-4" v-for="note in selected" :key="note.key">
@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-    <notes-footer :notes="notes" :trash="trash" />
+    <notes-footer :notes="notes" />
   </section>
 </template>
 
@@ -34,12 +34,13 @@ import NotesArchive from '@/components/notes-archive'
 import NoteView from '@/components/note-view'
 import NoteEdit from '@/components/note-edit'
 import NotesFooter from '@/components/notes-footer'
+import NotesInfo from '@/components/notes-info'
 
 const { location } = window
 
 export default {
   name: 'notes-dashboard',
-  components: { NotesArchive, NoteView, NoteEdit, NotesFooter },
+  components: { NotesArchive, NoteView, NoteEdit, NotesFooter, NotesInfo },
   methods: {
     edit (note) { note.edit = true },
     select (note) {
