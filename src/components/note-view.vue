@@ -47,7 +47,7 @@ export default {
   methods: {
     md (content) { return content ? markdown.render(content) : null },
     exportNote () {
-      this.exportData = JSON.stringify(this.note)
+      this.exportData = `[#${JSON.stringify(this.note)}]`
       Vue.nextTick(() => this.$refs.exportDataInput.focus())
     }
   },

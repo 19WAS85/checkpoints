@@ -1,10 +1,10 @@
 <template>
   <section :id="$options.name" class="p-4 rounded shadow">
-    <section :id="`${$options.name}-export`">
+    <section :id="`${$options.name}-data`">
       <header>
         <h1 class="py-2 font-bold text-sm">Local Database</h1>
       </header>
-      <ul class="text-xs text-gray-500 list-disc list-inside" v-if="notes">
+      <ul class="ml-2 text-xs text-gray-500 list-disc list-inside" v-if="notes">
         <li>
           <button class="underline" @click="show(notes)">
             Export Archived ({{ this.notes.length }})
@@ -34,6 +34,18 @@
           Close
         </button>
       </div>
+    </section>
+    <section :id="`${$options.name}-keys`">
+      <header>
+        <h1 class="py-2 font-bold text-sm">Keyboard Shortcuts</h1>
+      </header>
+      <ul class="ml-2 text-xs text-gray-500 list-disc list-inside">
+        <li><kbd class="px-1 rounded bg-gray-100 font-bold">N</kbd> Create</li>
+        <li><kbd class="px-1 rounded bg-gray-100 font-bold">E</kbd> Edit</li>
+        <li><kbd class="px-1 rounded bg-gray-100 font-bold">R</kbd> Remove</li>
+        <li><kbd class="px-1 rounded bg-gray-100 font-bold">D</kbd> Done</li>
+        <li><kbd class="px-1 rounded bg-gray-100 font-bold">C</kbd> Close</li>
+      </ul>
     </section>
   </section>
 </template>

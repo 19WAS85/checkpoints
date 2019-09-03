@@ -13,7 +13,7 @@
         </button>
       </div>
     </header>
-    <ul class="mt-2 list-disc list-inside text-sm">
+    <ul class="mt-2 ml-2 list-disc list-inside text-sm">
       <li v-for="note in notes" :key="note.key">
         <a class="cursor-pointer text-blue-500"
           :href="`#${note.key}`" @click="$emit('select', note)">
