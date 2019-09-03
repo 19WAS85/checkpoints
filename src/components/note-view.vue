@@ -30,16 +30,7 @@
 </template>
 
 <script>
-import MarkdownIt from 'markdown-it'
-import Hashtags from 'markdown-it-hashtag'
-
-const options = { html: true, linkify: true }
-const markdown = new MarkdownIt(options).use(Hashtags)
-const rules = markdown.renderer.rules
-
-rules.hashtag_open = (t, i) => `<a href="#${t[i].content.toLowerCase()}">`
-rules.hashtag_text = (t, i) => t[i].content
-rules.hashtag_close = (t, i) => '</a>'
+import markdown from '@/markdown'
 
 export default {
   name: 'note-view',
