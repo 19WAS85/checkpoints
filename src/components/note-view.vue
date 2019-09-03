@@ -13,7 +13,15 @@
           class="underline"
           @click="$emit('edit', note)">
           Edit
-        </button>
+        </button> •
+        <button class="underline" @click="exportNote">Export</button>
+        <input
+          class="ml-2 font-mono"
+          type="text"
+          onfocus="this.select()"
+          ref="exportDataInput"
+          v-model="exportData"
+          v-if="exportData">
       </div>
     </header>
     <div
@@ -30,12 +38,20 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import markdown from '@/markdown'
 
 export default {
   name: 'note-view',
   props: { note: Object },
-  methods: { md (content) { return content ? markdown.render(content) : null } }
+  methods: {
+    md (content) { return content ? markdown.render(content) : null },
+    exportNote () {
+      this.exportData = JSON.stringify(this.note)
+      Vue.nextTick(() => this.$refs.exportDataInput.focus())
+    }
+  },
+  data () { return { exportData: null } }
 }
 </script>
 
