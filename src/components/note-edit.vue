@@ -8,7 +8,7 @@
             type="text"
             placeholder="Title"
             onfocus="this.select()"
-            :autofocus="!note.updated"
+            ref="titleInput"
             v-model="note.title"
             @blur="updateLink">
         </div>
@@ -26,7 +26,6 @@
         <textarea class="border border-gray-200 rounded py-1 px-2 w-full"
           rows="10"
           placeholder="Text"
-          :autofocus="note.updated"
           v-model="note.text">
         </textarea>
       </div>
@@ -70,6 +69,9 @@ export default {
     }
   },
   data () { return { link: null } },
-  mounted () { this.link = this.note.key }
+  mounted () {
+    this.link = this.note.key
+    if (!this.note.updated) this.$refs.titleInput.focus()
+  }
 }
 </script>
