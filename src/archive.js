@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import store from './store'
 import slugify from './slugify'
 
@@ -21,7 +22,7 @@ const save = () => {
 const set = (note) => {
   note.updated = new Date()
   const index = ARCHIVE.findIndex(n => n.key === note.key)
-  if (index > -1) ARCHIVE[index] = note
+  if (index > -1) Vue.set(ARCHIVE, index, note)
   else ARCHIVE.push(note)
   ARCHIVE.sort((a, b) => a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1)
   save()
