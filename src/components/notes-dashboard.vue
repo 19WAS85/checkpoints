@@ -85,6 +85,17 @@ export default {
         if (note) this.select(note)
         else this.create(key)
       }, false)
+    },
+    checkSource () {
+      const source = new URLSearchParams(window.location.search).get('source')
+      if (!source) return
+      const http = new XMLHttpRequest()
+      http.onreadystatechange = () => {
+        if (http.readyState !== 4) return
+        JSON.parse(http.response).forEach(note => this.push(note))
+      }
+      http.open('GET', source)
+      http.send()
     }
   },
   data () { return { selected: [], notes: null, trash: null } },
@@ -96,6 +107,7 @@ export default {
     if (note) this.selected.unshift(note)
     else this.create(key)
     this.addHashListener()
+    this.checkSource()
   }
 }
 </script>
