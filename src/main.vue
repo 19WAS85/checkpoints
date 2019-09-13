@@ -24,7 +24,11 @@ import NotesDashboard from '@/components/notes-dashboard'
 export default {
   name: 'checkpoints-main',
   components: { NotesDashboard },
-  data () { return { version } }
+  data () { return { version } },
+  mounted () {
+    const env = process.env.NODE_ENV
+    if (env !== 'production') this.version += `-${env}`
+  }
 }
 </script>
 
