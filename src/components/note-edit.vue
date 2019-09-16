@@ -23,9 +23,10 @@
         </div>
       </div>
       <div class="mb-1">
-        <textarea class="border border-gray-200 rounded py-1 px-2 w-full"
+        <textarea class="border border-gray-200 rounded py-1 px-2 w-full font-mono text-xs"
           rows="10"
           placeholder="Text"
+          ref="noteTxtArea"
           v-model="note.text">
         </textarea>
       </div>
@@ -66,12 +67,22 @@ export default {
     remove () {
       const message = `Remove ${this.note.title}?`
       if (confirm(message)) this.$emit('remove', this.note)
+    },
+    autoHeight () {
+      const txt = this.$refs.noteTxtArea
+      const heightCss = `height:${txt.scrollHeight}px;overflow-y:hidden;`
+      txt.setAttribute('style', heightCss)
+      txt.addEventListener('input', () => {
+        txt.style.height = 'auto'
+        txt.style.height = `${txt.scrollHeight}px`
+      }, false)
     }
   },
   data () { return { link: null } },
   mounted () {
     this.link = this.note.key
     if (!this.note.updated) this.$refs.titleInput.focus()
+    this.autoHeight()
   }
 }
 </script>

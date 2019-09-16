@@ -8,13 +8,7 @@
       <div class="text-xs text-gray-500">
         {{ note.created.toLocaleDateString() }} •
         #{{ note.key }} •
-        <button
-          data-hotkey="e"
-          class="underline"
-          @click="$emit('edit', note)">
-          Edit
-        </button> •
-        <button class="underline" @click="exportNote">Export</button>
+        <button class="underline" @click="exportNote">Export</button> •
         <input
           class="ml-2 font-mono"
           type="text"
@@ -22,6 +16,12 @@
           ref="exportDataInput"
           v-model="exportData"
           v-if="exportData">
+        <button
+          data-hotkey="e"
+          class="underline"
+          @click="$emit('edit', note)">
+          Edit
+        </button>
       </div>
     </header>
     <div
