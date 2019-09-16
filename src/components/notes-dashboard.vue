@@ -6,7 +6,12 @@
           :notes="notes"
           @select="select"
           @create="create" />
-        <notes-info class="mt-4" :notes="notes" :trash="trash" @push="push"/>
+        <notes-info
+          class="mt-4"
+          :notes="notes"
+          :trash="trash"
+          @push="push"
+          @clear="clear" />
       </div>
       <div class="w-3/4 p-1 m-1">
         <div class="mb-4" v-for="note in selected" :key="note.key">
@@ -78,6 +83,7 @@ export default {
       archive.remove(note.key)
       this.close(note)
     },
+    clear () { archive.clearTrash() },
     addHashListener () {
       window.addEventListener('hashchange', (event) => {
         const key = event.newURL.split('#')[1]

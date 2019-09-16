@@ -16,6 +16,11 @@
           </button>
         </li>
         <li>
+          <button class="underline" @click="clear()">
+            Clear Trash
+          </button>
+        </li>
+        <li>
           <button class="underline" @click="importNotes">Import</button>
           <span v-if="jsonData || importing"> •
             <button
@@ -71,6 +76,11 @@ export default {
     show (collection) {
       this.jsonData = JSON.stringify(collection, null, 2)
       Vue.nextTick(() => document.getElementById('json-data').focus())
+    },
+    clear () {
+      if (confirm(`Really clear ${this.trash.length} trash items?`)) {
+        this.$emit('clear')
+      }
     }
   },
   data () { return { jsonData: null, importing: null } }

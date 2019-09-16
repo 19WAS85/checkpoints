@@ -48,4 +48,18 @@ const remove = (key) => {
   save()
 }
 
-export default { create, find, list, trash, push, changeKey, remove }
+const clearTrash = () => Vue.nextTick(() => {
+  TRASH.splice(0, TRASH.length)
+  save()
+})
+
+export default {
+  create,
+  find,
+  list,
+  trash,
+  push,
+  changeKey,
+  remove,
+  clearTrash
+}
