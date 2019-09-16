@@ -7,7 +7,7 @@
           <span class="inline-block align-bottom font-light text-lg">
             Checkpoints
             <small class="text-xs align-middle">
-              ({{ version }})
+              (v{{ version }})
             </small>
           </span>
         </a>
