@@ -2,37 +2,39 @@
   <section :id="$options.name" class="p-4 rounded shadow">
     <section :id="`${$options.name}-data`">
       <header>
-        <h1 class="py-2 font-bold text-sm">Local Database</h1>
+        <h1 class="py-2 font-bold text-sm">Local JSON Database</h1>
       </header>
       <ul class="ml-2 text-xs text-gray-500 list-disc list-inside" v-if="notes">
         <li>
           <button class="underline" @click="show(notes)">
-            Export Archived ({{ this.notes.length }})
+            Archived ({{ this.notes.length }})
           </button>
         </li>
         <li>
           <button class="underline" @click="show(trash)">
-            Export Removed ({{ this.trash.length }})
+            Removed ({{ this.trash.length }})
           </button>
         </li>
         <li>
-          <button class="underline" @click="importNotes">
-            Import Notes
-          </button>
+          <button class="underline" @click="importNotes">Import</button>
+          <span v-if="jsonData || importing"> •
+            <button
+              class="underline text-xs"
+              @click="importing = jsonData = null">
+              Close
+            </button>
+          </span>
         </li>
       </ul>
-      <div v-if="jsonData || importing" class="text-gray-500">
+      <div v-if="jsonData || importing" class="mt-2 text-gray-500 text-right">
         <textarea
-          placeholder="Paste Database and Press Import"
+          placeholder="Paste JSON database and press Import"
           id="json-data"
           rows="10"
-          class="p-2 w-full font-mono text-xs mt-2"
+          class="p-2 w-full font-mono text-xs"
           onfocus="this.select()"
           v-model="jsonData">
         </textarea>
-        <button class="underline text-xs" @click="importing = jsonData = null">
-          Close
-        </button>
       </div>
     </section>
     <section :id="`${$options.name}-keys`">
