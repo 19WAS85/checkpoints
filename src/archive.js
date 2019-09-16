@@ -48,6 +48,4 @@ const remove = (key) => {
   save()
 }
 
-if (ARCHIVE.length === 0) store.start().forEach(n => push(n))
-
 export default { create, find, list, trash, push, changeKey, remove }
