@@ -87,7 +87,7 @@ export default {
       }, false)
     },
     checkSource () {
-      const url = new URLSearchParams(window.location.search).get('source')
+      const url = new URLSearchParams(window.location.search).get('src')
       if (url) store.source(url).then(n => n.forEach(note => this.push(note)))
     }
   },
