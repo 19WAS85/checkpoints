@@ -29,6 +29,7 @@
 
 <script>
 import archive from '@/archive'
+import store from '@/store'
 import slugify from '@/slugify'
 import NotesArchive from '@/components/notes-archive'
 import NoteView from '@/components/note-view'
@@ -72,7 +73,6 @@ export default {
       }
       note.edit = false
       archive.push(note)
-      location.hash = note.key
     },
     remove (note) {
       archive.remove(note.key)
@@ -87,15 +87,8 @@ export default {
       }, false)
     },
     checkSource () {
-      const source = new URLSearchParams(window.location.search).get('source')
-      if (!source) return
-      const http = new XMLHttpRequest()
-      http.onreadystatechange = () => {
-        if (http.readyState !== 4) return
-        JSON.parse(http.response).forEach(note => this.push(note))
-      }
-      http.open('GET', source)
-      http.send()
+      const url = new URLSearchParams(window.location.search).get('source')
+      if (url) store.source(url).then(n => n.forEach(note => this.push(note)))
     }
   },
   data () { return { selected: [], notes: null, trash: null } },

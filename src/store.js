@@ -13,6 +13,18 @@ const load = (key) => {
   if (stored) return collection.map(v => parse(v))
 }
 
+const source = (url) => {
+  return new Promise(resolve => {
+    const http = new XMLHttpRequest()
+    http.onreadystatechange = () => {
+      if (http.readyState !== 4) return
+      resolve(JSON.parse(http.response))
+    }
+    http.open('GET', url)
+    http.send()
+  })
+}
+
 const save = (key, obj) => localStorage.setItem(key, JSON.stringify(obj))
 
-export default { parse, save, load }
+export default { parse, save, load, source }
