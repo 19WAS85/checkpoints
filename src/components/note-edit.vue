@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="mb-1">
-        <textarea class="border border-gray-200 rounded py-1 px-2 w-full font-mono text-sm"
+        <textarea class="border border-gray-200 rounded py-1 px-2 w-full font-mono text-xs"
           rows="10"
           placeholder="Text"
           ref="noteTxtArea"
