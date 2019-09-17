@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="mb-1">
-        <textarea class="border border-gray-200 rounded py-1 px-2 w-full font-mono text-xs"
+        <textarea class="border border-gray-200 rounded py-1 px-2 w-full font-mono text-sm"
           rows="10"
           placeholder="Text"
           ref="noteTxtArea"
@@ -62,7 +62,7 @@ export default {
   props: { note: Object },
   methods: {
     updateLink () {
-      if (!this.link || !this.updated) this.link = slugify(this.note.title)
+      if (!this.link || !this.note.updated) this.link = slugify(this.note.title)
     },
     remove () {
       const message = `Remove ${this.note.title}?`
