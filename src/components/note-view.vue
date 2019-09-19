@@ -64,6 +64,7 @@ export default {
 .note-content h6 { margin: .75rem 0; font-size: .75rem }
 .note-content a { color: #4299E1 }
 .note-content p { margin: 1rem 0 }
+.note-content hr { margin: 1rem 0 }
 .note-content table { width: 100% }
 .note-content th { background-color: #F7FAFC }
 .note-content tr { border-bottom: 1px solid #E2E8F0 }
