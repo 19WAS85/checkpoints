@@ -1,11 +1,12 @@
-> Client hash-link based personal wiki using markdown and local-storage.
+> The weightless wiki engine
 
-https://19was85.github.io/checkpoints/
+Checkpoints uses #markdown to create rich content and simple `#hashtags` to link it.
 
-### Tricks
+The data is saved locally and you can easily share through the interface or import from JSON file.
 
- - Create rich text, list, images, tables and others using [markdown](https://guides.github.com/features/mastering-markdown/);
- - Click or #create simple `#hash` or `[Markdown Links](#hash)` to create related content;
- - Archive is character sorted, use prefixes to group them;
- - Double click at item header is a shortcut to edit;
- - The first archive item is your default home;
+Some tricks:
+
+ - Double click at article header to edit;
+ - Archive is sorted by char, group them using prefixes;
+ - The first item of Archive is your home Article;
+ - Use `?src=database.json` to import content from remote file;
