@@ -93,20 +93,30 @@ export default {
       }, false)
     },
     checkSource () {
-      const url = new URLSearchParams(window.location.search).get('src')
-      if (url) store.source(url).then(n => n.forEach(note => this.push(note)))
+      return new Promise(resolve => {
+        const url = new URLSearchParams(window.location.search).get('src')
+        if (url) {
+          store.source(url)
+            .then(n => n.forEach(note => this.push(note)))
+            .then(resolve)
+        } else {
+          resolve()
+        }
+      })
+    },
+    checkSelectedHash () {
+      const key = location.hash.substring(1)
+      const note = key ? archive.find(key) : this.notes[0]
+      if (note) this.selected.unshift(note)
+      else this.create(key)
     }
   },
   data () { return { selected: [], notes: null, trash: null } },
   mounted () {
     this.notes = archive.list()
     this.trash = archive.trash()
-    const key = location.hash.substring(1)
-    const note = key ? archive.find(key) : this.notes[0]
-    if (note) this.selected.unshift(note)
-    else this.create(key)
     this.addHashListener()
-    this.checkSource()
+    this.checkSource().then(this.checkSelectedHash)
   }
 }
 </script>
