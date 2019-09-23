@@ -72,7 +72,7 @@ export default {
 .note-content code { border: 1px solid #EDF2F7; border-radius: .25rem }
 .note-content pre { margin: .75rem 0; padding: .5rem; background-color: #F7FAFC }
 .note-content pre { border: 1px solid #EDF2F7; border-radius: .25rem }
-.note-content pre { overflow-y: auto }
+.note-content pre { font-size: .875em; overflow-y: auto }
 .note-content pre code { padding: 0; border: none }
 .note-content blockquote { margin: 0rem 1rem; font-style: italic }
 .note-content ul { margin: 0 1rem; list-style: disc inside }
