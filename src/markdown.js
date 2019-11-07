@@ -2,7 +2,8 @@ import MarkdownIt from 'markdown-it'
 import Hashtags from 'markdown-it-hashtag'
 
 const options = { html: true, linkify: true }
-const markdown = new MarkdownIt(options).use(Hashtags)
+const hashtagRegExp = '[\\w\'-]+'
+const markdown = new MarkdownIt(options).use(Hashtags, { hashtagRegExp })
 const rules = markdown.renderer.rules
 
 rules.hashtag_open = (t, i) => `<a href="#${t[i].content.toLowerCase()}">`
